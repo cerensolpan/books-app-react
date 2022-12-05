@@ -1,13 +1,22 @@
-
+import { useState } from 'react';
 import { Disclosure } from '@headlessui/react'
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useDispatch, useSelector } from "react-redux";
+import {getBooks} from "../features/booksSlice"
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
+
+export default function Navbar() {
+  const dispatch = useDispatch();
+
+  const [search, setSearch] = useState("");
+
+  const searchBook=(evt)=>{
+    if(evt.key==="Enter"){
+      dispatch(getBooks(search))
+    }
 }
 
-export default function Example() {
   return (
     <Disclosure as="nav" className="bg-gray-800">
       {({ open }) => (
@@ -47,6 +56,9 @@ export default function Example() {
                       className="block w-full rounded-md border border-transparent bg-gray-700 py-2 pl-10 pr-3 leading-5 text-gray-300 placeholder-gray-400 focus:border-white focus:bg-white focus:text-gray-900 focus:outline-none focus:ring-white sm:text-sm"
                       placeholder="Search"
                       type="search"
+                      value={search} 
+                      onChange={e=>setSearch(e.target.value)}
+                      onKeyPress={searchBook}
                     />
                   </div>
                 </div>
