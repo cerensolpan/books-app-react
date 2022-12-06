@@ -1,24 +1,23 @@
 import card from "../card.png";
 
-export default function Card() {
+export default function Card({book}) {
   return (
     <div className="flex bg-gray-800 py-4 px-4 space-x-3">
-      <img src={card} alt="img-book" />
+      <img src={book.volumeInfo.imageLinks.smallThumbnail} alt="img-book" />
       <div className="flex flex-col text-start space-y-2">
         <span className="text-violet-500 text-xl">
-          Coding with JavaScript For Dummies
+          {book.volumeInfo.title}
         </span>
         <div className="flex space-x-1">
+          {book.volumeInfo.authors.map((author)=>(
           <span className="text-violet-500 text-sm">
-            Chris Minnick,Eva Holland
+            {author}
           </span>
-          <span className="text-violet-200 text-sm"> · 2015</span>
+          ))}
+          <span className="text-violet-200 text-sm"> · {book.volumeInfo.publishedDate.split("-",1)}</span>
         </div>
-        <span className="text-violet-200 text-sm">
-          Java courses for beginners all the way to advanced courses. Learn Java
-          with in-depth online courses from Pluralsight. Certification Prep.
-          Skill Assessments. Mobile Apps. Role IQ. Offline Access. Expert-Led
-          Courses. Hands-on Learning. Cloud Labs. Courses: IT Ops, AI, Big Data.
+        <span className="text-violet-200 text-sm line-clamp-3">
+        {book.volumeInfo.description}
         </span>
         <div>
           <button
