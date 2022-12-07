@@ -9,12 +9,12 @@ export default function Card({book}) {
           {book.volumeInfo.title}
         </span>
         <div className="flex space-x-1">
-          {book.volumeInfo.authors.map((author)=>(
+          {book.volumeInfo?.authors?.map((author)=>(
           <span className="text-violet-500 text-sm">
             {author}
           </span>
           ))}
-          <span className="text-violet-200 text-sm"> · {book.volumeInfo.publishedDate.split("-",1)}</span>
+          <span className="text-violet-200 text-sm"> · {book.volumeInfo?.publishedDate?.split("-",1)}</span>
         </div>
         <span className="text-violet-200 text-sm line-clamp-3">
         {book.volumeInfo.description}
