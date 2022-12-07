@@ -30,6 +30,7 @@ const booksSlice = createSlice({
         return state;
       })
       .addCase(getBooks.fulfilled, (state, action) => {
+        state.status = "success";
         state.books=action.payload;
         return state;
       })
