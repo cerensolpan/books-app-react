@@ -29,7 +29,7 @@ export default function Navbar() {
                 </div>
                 <div className="hidden lg:ml-20 lg:block">
                   <div className="flex space-x-4">
-                    <a href="#" className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">
+                    <a href="/" className="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">
                       Home
                     </a>
                   </div>
